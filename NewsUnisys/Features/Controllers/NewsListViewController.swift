@@ -51,7 +51,7 @@ class NewsListViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //We use newsList like a copy of all the news. FilteredData only will contain the news that match when the text in the search bar
-        self.filteredData = searchText.isEmpty ? self.newsList : self.newsList?.filter { $0.title?.contains(searchText) ?? false }
+        self.filteredData = searchText.isEmpty ? self.newsList : self.newsList?.filter { $0.title?.lowercased().contains(searchText.lowercased()) ?? false }
         
         tableView.reloadData()
     }
