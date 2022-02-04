@@ -15,6 +15,7 @@ class NewsTableViewCell: UITableViewCell {
     var imageProtocolDelegate: ImageProtocol?
     
     func bind(news: News) {
+        self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         self.titleLabel.text = news.title
         self.newsDescriptionTextView.text = news.description
@@ -41,6 +42,7 @@ class NewsTableViewCell: UITableViewCell {
     
     private func setImage(newsImage: UIImage?, isFromDownload: Bool) {
         self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
         
         //If the image come from a new download, the image will appear with a effect of transition
         if isFromDownload {
